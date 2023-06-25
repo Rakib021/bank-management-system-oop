@@ -23,7 +23,18 @@ class Bank:
         else:
             print("account does not exits")
             
-   
+    def withdraw(self,name,amount):
+            self.name = name
+            self.amount = amount
+        
+            if name in self.accounts:
+               if self.accounts[name]["balance"] >=amount:
+                  self.accounts[name]["balance"] -=amount
+                  self.accounts[name]["transaction"].append(f'withdraw money :{amount}')
+               else:
+                    print("Your account is faka faka...please deposited some money")
+            else:
+                print("account doesnot exits")
         
         
             
