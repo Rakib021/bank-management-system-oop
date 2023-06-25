@@ -35,6 +35,16 @@ class Bank:
                     print("Your account is faka faka...please deposited some money")
             else:
                 print("account doesnot exits")
+                
+    def check_bal(self,name):
+        if name in self.accounts:
+            balance = self.accounts[name]["balance"]
+            print(f"available balance for {name} : {balance}")
+        else:
+            print("account doesn't exits")
+            
+    
+        
         
         
             
