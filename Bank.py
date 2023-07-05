@@ -43,6 +43,34 @@ class Bank:
         else:
             print("account doesn't exits")
             
+    def transfer(self,sender,receiver,amount):
+        self.sender = sender
+        self.receiver = receiver
+        self.amount = amount
+        
+        if sender in self.accounts and receiver in self.accounts:
+            if self.accounts[sender]["balance"] >=amount:
+                self.accounts[sender]["balance"] -=amount
+                self.accounts[sender]["transaction"].append(f"transferrred {amount} to {receiver}")
+                self.accounts[receiver]["balance"] +=amount
+                self.accounts[receiver]["transaction"].append(f"received {amount} from {sender}")
+                print(f"{amount} transferred successfully from {sender} to {receiver} account")
+            else:
+                print("Insufficient balance")
+        else:
+            print("Both accounts does not exit")
+            
+    def transaction_history(self, name):
+        if name in self.accounts:
+            transactions = self.accounts[name]["transactions"]
+            print(f"Transaction history for {name}:")
+            for transaction in transactions:
+                print(transaction)
+        else:
+            print("Account does not exist.")
+            
+    
+            
     
         
         
