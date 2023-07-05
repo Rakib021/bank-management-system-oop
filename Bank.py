@@ -69,7 +69,15 @@ class Bank:
         else:
             print("Account does not exist.")
             
-    
+    def take_loan(self, name):
+        if name in self.accounts:
+            total_amount = self.accounts[name]["balance"]
+            loan_amount = total_amount * 2
+            self.accounts[name]["balance"] += loan_amount
+            self.accounts[name]["transactions"].append(f"Loan taken: {loan_amount}")
+            print(f"{loan_amount} loan taken successfully by {name}.")
+        else:
+            print("Account does not exist.")
             
     
         
