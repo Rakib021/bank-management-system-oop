@@ -1,4 +1,4 @@
-class Bank:
+class BankAccount:
     def __init__(self):
         self.accounts= {}
         
@@ -62,9 +62,9 @@ class Bank:
             
     def transaction_history(self, name):
         if name in self.accounts:
-            transactions = self.accounts[name]["transactions"]
+            transaction = self.accounts[name]["transaction"]
             print(f"Transaction history for {name}:")
-            for transaction in transactions:
+            for transaction in transaction:
                 print(transaction)
         else:
             print("Account does not exist.")
@@ -74,13 +74,45 @@ class Bank:
             total_amount = self.accounts[name]["balance"]
             loan_amount = total_amount * 2
             self.accounts[name]["balance"] += loan_amount
-            self.accounts[name]["transactions"].append(f"Loan taken: {loan_amount}")
+            self.accounts[name]["transaction"].append(f"Loan taken: {loan_amount}")
             print(f"{loan_amount} loan taken successfully by {name}.")
         else:
             print("Account does not exist.")
             
+    def get_total_balance(self):
+            total_balance = sum(account["balance"] for account in self.accounts.values())
+            return total_balance
+
+    def get_total_loan_amount(self):
+        total_loan_amount = sum(account["balance"] for account in self.accounts.values())
+        return total_loan_amount
     
         
-        
-        
-            
+class Admin:
+    def __init__(self, bank):
+        self.bank = bank
+
+    def create_account(self, user_id):
+        if user_id in self.bank.accounts:
+            print("Account already exists.")
+        else:
+            self.bank.create_account(user_id)
+            print(f"Account {user_id} created successfully.")
+
+
+    def check_total_balance(self):
+        total_balance = self.bank.get_total_balance()
+        print(f"Total balance of the bank: ${total_balance}.")
+
+    def check_total_loan_amount(self):
+        total_loan_amount = self.bank.get_total_loan_amount()
+        print(f"Total loan amount of the bank: ${total_loan_amount}.")
+
+    def enable_loan_feature(self):
+            self.loan_feature_enabled = True
+            print("Loan feature has been enabled.")
+
+    def disable_loan_feature(self):
+        self.loan_feature_enabled = False
+        print("Loan feature has been disabled.")
+
