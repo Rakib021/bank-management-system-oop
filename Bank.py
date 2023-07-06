@@ -9,7 +9,7 @@ class BankAccount:
             print(f"---->account created successfully for {name}<-----")
             
         else:
-            print("-----Already have an account for this name-----")
+            print("----->Already have an account for this name<-----")
             
     def deposit(self,name,amount):
         self.name = name
@@ -110,9 +110,9 @@ class Admin:
 
     def enable_loan_feature(self):
             self.loan_feature_enabled = True
-            print("Loan feature has been enabled.")
+            print("Loan feature enabled.")
 
     def disable_loan_feature(self):
         self.loan_feature_enabled = False
-        print("Loan feature has been disabled.")
+        print("Loan feature disabled.")
 

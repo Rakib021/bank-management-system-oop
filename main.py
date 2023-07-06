@@ -13,10 +13,8 @@ def main():
     bank.check_bal("Sakib")
     bank.transaction_history("Sakib")
 
-    # Create an admin instance
-    admin = Admin(bank)
 
-    # Admin operations
+    admin = Admin(bank)
     admin.create_account("chinmoy")
     admin.check_total_balance()
     admin.check_total_loan_amount()
